@@ -1,4 +1,7 @@
-#include "automaton.h"
+#include <iostream>
+#include <vector>
+#include <set>
+#include "automato/automaton.h"
 
 int main() {
     // Read number of states
@@ -20,7 +23,7 @@ int main() {
     std::cin >> numInitialStates;
     for (int i = 0; i < numInitialStates; i++) {
         int state;
-        std::cin >> state;  
+        std::cin >> state;
         automaton.initial_state(state);
     }
 

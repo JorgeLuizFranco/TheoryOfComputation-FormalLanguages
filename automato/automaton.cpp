@@ -2,7 +2,7 @@
 
 // Constructor
 Automaton::Automaton(int num_states) {
-    for(int i = 0; i < num_states; i++) {
+    for (int i = 0; i < num_states; i++) {
         State state(i);
         states.emplace_back(state);
     }
@@ -20,7 +20,7 @@ void Automaton::initial_state(unsigned int initial_state) {
 
 // Set the accepting states of the automaton
 void Automaton::accepting_states(const std::set<unsigned int>& accepting_states) {
-    for(auto state : accepting_states) {
+    for (auto state : accepting_states) {
         states[state].set_accepting();
     }
 }
@@ -29,9 +29,9 @@ void Automaton::accepting_states(const std::set<unsigned int>& accepting_states)
 bool Automaton::accepts(const std::string& input) {
     std::set<State*> current_states = {initial};
 
-    for(char symbol : input) {
+    for (char symbol : input) {
         std::set<State*> next_states;
-        for(auto state : current_states) {
+        for (auto state : current_states) {
             auto neighbours = state->neighbours(symbol);
             next_states.insert(neighbours.begin(), neighbours.end());
         }
@@ -43,8 +43,8 @@ bool Automaton::accepts(const std::string& input) {
         current_states = next_states;
     }
 
-    for(auto state : current_states) {
-        if(state->accepts()) {
+    for (auto state : current_states) {
+        if (state->accepts()) {
             return true;
         }
     }
