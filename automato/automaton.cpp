@@ -70,6 +70,11 @@ bool Automaton::simulate(const std::string& input) {
     processLambdaTransitions(current_states);
 
     for (char symbol : input) {
+        // Skip lambda inputs
+        if(symbol == '-'){
+            continue;
+        }
+
         std::vector<STATE*> next_states;
 
         for (STATE* state : current_states) {
